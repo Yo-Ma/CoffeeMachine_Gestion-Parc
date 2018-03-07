@@ -1,19 +1,28 @@
 import Vue from 'vue'
 import App from './App.vue'
+import VueRouter from 'vue-router'
 import MachinesList from './MachinesList'
 import MachinesMap from './MachinesMap'
-import VueRouter from 'vue-router'
+import Machine from './Machine.vue'
 
 Vue.use(VueRouter);
 
 Vue.component('MachinesList', MachinesList);
 Vue.component('MachinesMap', MachinesMap);
+Vue.component('Machine', Machine);
 
 
 // Définition des routes
 const routes = [
-  { path: '/liste-des-machines', component: MachinesList },
-  { path: '/carte', component: MachinesMap }
+  { path: '/liste-des-machines',
+    component: MachinesList
+  },
+  { path: '/carte',
+    component: MachinesMap
+  },
+  { path: '/machine',
+    component: Machine
+  }
 ];
 
 // Raccourci pour `routes: routes`

@@ -9,6 +9,7 @@
     <router-link to="/carte" type="button" class="btn btn-secondary"> Accéder à la carte </router-link>
     <br />
     <router-view></router-view>
+    <br />
   </div>
 </template>
 
