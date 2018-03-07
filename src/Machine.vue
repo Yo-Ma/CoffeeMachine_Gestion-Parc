@@ -9,7 +9,7 @@
         <h3 v-if="status" class="inGreen"> Status OK </h3>
         <h3 v-else="status" class="inRed"> Status KO </h3>
         <br />
-        <h5> {{ dateFormated(checkedAt) }} </h5>
+        <h5> Dernière vérification faite le : {{ dateFormated(checkedAt) }} </h5>
       </div>
     </div>
   </div>
@@ -17,18 +17,16 @@
 
 <script>
   export default {
+    props: ['name', 'status', 'checkedAt'],
+    name: 'Machine',
     data() {
       return {
-        name: 'What else ?',
-        status: true,
-        checkedAt: new Date(),
-      };
+      }
     },
     methods: {
       dateFormated: function (checkedAt) {
         return checkedAt.toLocaleString();
       }
-
     }
   };
 </script>
