@@ -5,7 +5,7 @@
              v-bind:key="machine.id"
              v-bind:name="machine.name"
              v-bind:status="machine.status"
-             v-bind:checked-at="machine.checkedAt"></machine>
+             v-bind:checked-at="machine.checkedAt"/>
   </div>
 </template>
 

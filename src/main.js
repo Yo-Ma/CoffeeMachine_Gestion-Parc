@@ -4,8 +4,14 @@ import VueRouter from 'vue-router'
 import MachinesList from './MachinesList'
 import MachinesMap from './MachinesMap'
 import Machine from './Machine.vue'
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.use(VueRouter);
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'YOUR_API_TOKEN',
+  }
+});
 
 Vue.component('MachinesList', MachinesList);
 Vue.component('MachinesMap', MachinesMap);
