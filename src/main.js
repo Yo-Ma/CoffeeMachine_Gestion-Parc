@@ -6,10 +6,17 @@ import MachinesMap from './MachinesMap'
 import Machine from './Machine.vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
+// require('GMapAPI.js')
+// Vue.use(VueGoogleMaps, {
+//   load: {
+//     key: myKey
+//   }
+// });
+
 Vue.use(VueRouter);
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'YOUR_API_TOKEN',
+    key: require('../GMapAPI.json').key,
   }
 });
 
