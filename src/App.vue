@@ -13,6 +13,14 @@ export default {
     return {
       msg: "Site de maintenance du parc 'Coffee Machines'"
     }
+  },
+  methods: {
+    onMachineListClick: function () {
+      window.alert('La liste des machines est en cours de chargement...');
+    },
+    onMapClick: function () {
+      window.alert('La carte est en cours de chargement...');
+    }
   }
 }
 </script>
