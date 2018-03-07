@@ -5,17 +5,14 @@
     <hr />
     <h2> Que souhaitez-vous faire ?</h2>
     <br />
-    <a href="" type="button" class="btn btn-secondary"
-       v-on:click="onMachineListClick"> Accéder à la liste des machines
-    </a>
-    <a href="" type="button" class="btn btn-secondary"
+    <router-link to="/liste-des-machines" type="button" class="btn btn-secondary"
+                 v-on:click="onMachineListClick"> Accéder à la liste des machines
+    </router-link>
+    <router-link to="/carte" type="button" class="btn btn-secondary"
        v-on:click="onMapClick"> Accéder à la carte
-    </a>
+    </router-link>
     <br />
-    <div>
-      <machines-list></machines-list>
-      <machines-map></machines-map>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
