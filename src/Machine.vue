@@ -1,10 +1,10 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <br>
-    <div class="jumbotron">
-      <div class="container">
+    <div class="container-fluid">
+      <div id="infos-machine" class="container">
         <br />
-        <h1> Machine {{ name }} </h1>
+        <h1> Machine <b> {{ name }} </b></h1>
         <br />
         <h3 v-if="status" class="inGreen"> Status OK </h3>
         <h3 v-else="status" class="inRed"> Status KO </h3>
@@ -21,6 +21,7 @@
     name: 'Machine',
     data() {
       return {
+
       }
     },
     methods: {
@@ -38,5 +39,9 @@
 
   .inRed {
     color: red;
+  }
+
+  #infos-machine {
+    border: solid black 2px;
   }
 </style>

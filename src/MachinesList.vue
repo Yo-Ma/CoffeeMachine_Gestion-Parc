@@ -1,9 +1,11 @@
 <template>
   <div>
     <h1> Liste des machines </h1>
-    <machine v-bind:name="name"
-             v-bind:status="status"
-             v-bind:checked-at="checkedAt"></machine>
+    <machine v-for="machine in machines"
+             v-bind:key="machine.id"
+             v-bind:name="machine.name"
+             v-bind:status="machine.status"
+             v-bind:checked-at="machine.checkedAt"></machine>
   </div>
 </template>
 
@@ -15,9 +17,18 @@
       name: 'machines-list',
       data() {
         return {
-          name: 'What else ?',
-          status: false,
-          checkedAt: new Date(),
+          machines: [
+            { id: 1,
+            name: 'What else ?',
+            status: true,
+            checkedAt: new Date(),
+            },
+            { id: 2,
+            name: 'Broken',
+            status: false,
+            checkedAt: new Date(),
+            }
+          ]
         }
       },
       methods: {
