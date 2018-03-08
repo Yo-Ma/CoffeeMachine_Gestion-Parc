@@ -1,13 +1,32 @@
 <template>
   <div>
     <h1>  Carte des machines </h1>
-    <gmap-map :center="{lat:45.188529, lng:5.724523999999974}" :zoom="4" style="width: 100%; height: 800px" />
+    <gmap-map :center="center" :zoom="10" style="width: 70%; height: 800px">
+      <gmap-marker :key="id"
+                   v-for="(m, id) in machines"
+                   :position="m.position"
+                   :clickable="true"
+                   :draggable="true"
+                   @click="center=m.position"/>
+    </gmap-map>
   </div>
 </template>
 
 <script>
     export default {
-        name: 'machines-map'
+      name: 'machines-map',
+      data () {
+        return {
+          center: {lat: 45.188529, lng: 5.724523999999974},
+          machines: [{
+            id: 1,
+            position: {lat: 45.188529, lng: 5.724523999999974}
+          }, {
+            id: 2,
+            position: {lat: 45.18554, lng: 5.728268899999989}
+          }]
+        }
+      }
     };
 </script>
 
