@@ -95,6 +95,9 @@ Votre réponse :
    
    Votre réponse :
    ````
+   Sur GitHub ou npmjs.org, comme tout autre bibliothèque de paquets et autres plugins, la popularité :
+      . Le nombre de téléchargements,
+      .
    ````
 
 7.2) Map vide.
@@ -103,6 +106,9 @@ Votre réponse :
    
    Votre réponse :
    ````
+   La clef API nous sert à nous authentifier aurpès des services Google afin qu'ils puissent gérer un quota d'utilisation.
+   Il ne faut donc pas la partager et donc la commiter. 
+   Il suffira, par exemple, de la mettre dans un fichier que nous ajouterons dans le .gitignore et de l'appeler via un 'require'.
    ````
     
 7.3) Ajouter les marqueurs.
@@ -134,7 +140,27 @@ Votre réponse :
    Quel problème cherchons nous à résoudre ?
    Quelle est la solution proposée ?
    Comment la mettre en oeuvre ?
-    
+   
+   Votre réponse :
+   ````
+   JavaScript étant asynchrone, nous n'attendons pas qu'un état soit terminé, une requête accomplie,... avant de pouvoir faire d'autres actions. 
+   L'utilisateur ainsi, n'est pas contraint d'attendre, par exemple, le chargement de la totalité des images d'une page avant de pouvoir parcourir le reste du site, cliquer sur des liens,...
+   L'inconvénient étant que, du coup, nous ne pouvons connaître l'état du serveur à un instant T.
+   Pour palier à cela, nous mettons en place la notion de promesses qui va donc permettre d'écouter un état (par exemple, la réponse arrivée d'un GET, success ou error et lancer une fonction etc...
+   en fonction de l'état déclaré...
+   Par exemple :
+            created() {
+              axios.get('https://machine-api-campus.herokuapp.com/api/machines')
+                   .then(response => {                            <- Lorsque la requête GET (faite via axios à l'API dont l'url est renseignée) est terminée avec succès 
+                     this.loading = false;                        <- Alors...
+                     this.error = null;
+                     this.machines = response.data;
+                   })
+                   .catch(error => {                              <- Si la requête est terminée avec erreur
+                     this.loading = false;                        <- Alors...
+                     this.error = error;
+                   }); 
+   ````
     
 8.3) Utilisation dans le projet.
 ...
