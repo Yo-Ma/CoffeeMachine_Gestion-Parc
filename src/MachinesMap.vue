@@ -1,14 +1,16 @@
 <template>
   <div class="container">
-    <h1>  Carte des machines </h1>
-    <gmap-map :center="center" :zoom="10" style="width: 70%; height: 800px" class="align-self-center">
-      <gmap-marker :key="id"
-                   v-for="(m, id) in machines"
-                   :position="m.position"
-                   :clickable="true"
-                   :draggable="true"
-                   @click="center=m.position"/>
-    </gmap-map>
+    <div id="carte-machines">
+      <h1>  Carte des machines </h1>
+      <gmap-map :center="center" :zoom="10" style="width: 70%; height: 800px" class="align-self-center">
+        <gmap-marker :key="id"
+                     v-for="(m, id) in machines"
+                     :position="m.position"
+                     :clickable="true"
+                     :draggable="true"
+                     @click="center=m.position"/>
+      </gmap-map>
+      </div>
   </div>
 </template>
 
@@ -32,7 +34,7 @@
 
 <style scoped>
   #carte-machines {
-
+    margin: auto;
   }
 
 </style>

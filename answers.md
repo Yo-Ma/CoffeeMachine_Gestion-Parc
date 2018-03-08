@@ -112,7 +112,22 @@ Votre réponse :
 ...
 
 8.1) Installation d'une librairie permettant de faire des appels HTTP.
-...
+
+**Prenez toujours le temps d'analyser cette librairie sur github, qu'est ce qui vous inspire confiance ?**
+
+  Votre réponse :
+  ````
+  Plugin encore en version bêta... mais les stats contrebalancent le tout :
+  
+  GitHub :
+      . 37 142 Stars - 2607 Forks - 801 Watchers
+      . 130 Contributors - 753 Commits (the latest a few hours ago)
+  
+  Stats npmjs.com :  
+      . 300 779 downloads in the last day
+      . 1 618 334 downloads in the last week
+      . 5 962 721 downloads in the last month 
+  ````
 
 8.2) Notion de promesses.
 
