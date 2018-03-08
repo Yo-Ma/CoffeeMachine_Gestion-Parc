@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container">
     <h1>  Carte des machines </h1>
-    <gmap-map :center="center" :zoom="10" style="width: 70%; height: 800px">
+    <gmap-map :center="center" :zoom="10" style="width: 70%; height: 800px" class="align-self-center">
       <gmap-marker :key="id"
                    v-for="(m, id) in machines"
                    :position="m.position"
@@ -31,5 +31,8 @@
 </script>
 
 <style scoped>
+  #carte-machines {
+
+  }
 
 </style>
