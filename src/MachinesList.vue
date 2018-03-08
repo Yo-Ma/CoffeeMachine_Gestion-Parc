@@ -11,25 +11,29 @@
 
 <script>
   import Machine from './Machine.vue'
+  import axios from 'axios'
 
     export default {
       components: { Machine },
       name: 'machines-list',
-      data() {
+      data: function() {
         return {
-          machines: [
-            { id: 1,
-            name: 'What else ?',
-            status: true,
-            checkedAt: new Date(),
-            },
-            { id: 2,
-            name: 'Broken',
-            status: false,
-            checkedAt: new Date(),
-            }
-          ]
+          machines: [],
+          loading: true,
+          error: null,
         }
+      },
+      created() {
+        axios.get('https://machine-api-campus.herokuapp.com/api/machines')
+             .then(response => {
+               this.loading = false;
+               this.error = null;
+               this.machines = response.data;
+             })
+             .catch(error => {
+               this.loading = false;
+               this.error = error;
+             });
       },
       methods: {
         dateFormated: function (checkedAt) {

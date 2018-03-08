@@ -2,8 +2,8 @@
   <div class="container">
     <div >
       <h1>  Carte des machines </h1>
-      <h2 v-if="loading"> Chargement de la carte...</h2>
-      <h2 v-if="error" class="error-msg"> Request error... </h2>
+      <h2 v-show="loading"> Chargement de la carte...</h2>
+      <h2 v-show="error" class="error-msg"> Request error... </h2>
       <gmap-map id="carte-machines" :center="{lat: 45.188529, lng: 5.724523999999974}" :zoom="10" style="width: 70%; height: 800px" class="align-self-center">
         <gmap-marker :key="id"
                      v-for="(m, id) in machines"/>
@@ -25,16 +25,18 @@ import axios from 'axios';
     data: function() {
       return {
         machines: [],
-        loading: false,
+        loading: true,
         error: null,
       }
     },
     created() {
       axios.get('https://machine-api-campus.herokuapp.com/api/machines')
-           .then(function (response) {
-             console.log(response);
+           .then(response => {
+             this.loading = false;
+             console.log(response.data);
            })
-           .catch(function (error) {
+           .catch(error => {
+             this.loading = false;
              console.log(error);
            });
     }
