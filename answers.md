@@ -136,7 +136,6 @@ Votre réponse :
    Comment la mettre en oeuvre ?
     
     
-    
 8.3) Utilisation dans le projet.
 ...
 
