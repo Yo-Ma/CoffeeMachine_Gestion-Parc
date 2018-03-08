@@ -7,13 +7,13 @@
         <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
       </h2>
       <h2 v-show="error" class="error-msg"> Request error... </h2>
-      <gmap-map id="carte-machines" :center="{lat: 45.188529, lng: 5.724523999999974}" :zoom="10" style="width: 70%; height: 800px" class="align-self-center">
-        <gmap-marker :key="id"
-                     v-for="(m, id) in machines"
-                     :position="{}"
+      <gmap-map id="carte-machines" :center="center" :zoom="10" style="width: 70%; height: 800px" class="align-self-center">
+        <gmap-marker :key="machine.id"
+                     v-for="machine in machines"
+                     :position="{lat:Number(machine.latitude), lng:Number(machine.longitude)}"
                      :clickable="true"
                      :draggable="true"
-                     @click="center=m.position"/>
+                     @click="center=machine.position"/>
       </gmap-map>
       </div>
   </div>
@@ -27,16 +27,19 @@ import axios from 'axios';
     name: 'machines-map',
     data: function() {
       return {
+        center: {lat: 45.188529, lng: 5.724523999999974},
         machines: [],
         loading: true,
         error: null,
       }
     },
     created() {
+
       axios.get('https://machine-api-campus.herokuapp.com/api/machines')
            .then(response => {
              this.loading = false;
-             console.log(response.data);
+             this.machines = response.data;
+
            })
            .catch(error => {
              this.loading = false;

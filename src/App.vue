@@ -8,7 +8,7 @@
     <br />
     <router-link to="/liste-des-machines" type="button" class="btn btn-secondary"> Accéder à la liste des machines </router-link>
     <router-link to="/carte" type="button" class="btn btn-secondary"> Accéder à la carte </router-link>
-    <router-view></router-view>
+    <router-view />
     <br />
 
   </div>
