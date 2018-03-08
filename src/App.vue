@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/coffee-bean.jpg">
+    <br />
     <h1>{{ msg }}</h1>
     <hr />
     <h2> Que souhaitez-vous faire ?</h2>

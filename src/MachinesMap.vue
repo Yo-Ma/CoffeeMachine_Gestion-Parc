@@ -2,15 +2,18 @@
   <div class="container">
     <div >
       <h1>  Carte des machines </h1>
-      <h2 v-show="loading"> Chargement de la carte...</h2>
+      <h2 v-show="loading" id="loader">
+        Chargement de la carte...
+        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+      </h2>
       <h2 v-show="error" class="error-msg"> Request error... </h2>
       <gmap-map id="carte-machines" :center="{lat: 45.188529, lng: 5.724523999999974}" :zoom="10" style="width: 70%; height: 800px" class="align-self-center">
         <gmap-marker :key="id"
-                     v-for="(m, id) in machines"/>
-                     <!--:position="m.position"
+                     v-for="(m, id) in machines"
+                     :position="{}"
                      :clickable="true"
                      :draggable="true"
-                     @click="center=m.position"-->
+                     @click="center=m.position"/>
       </gmap-map>
       </div>
   </div>
@@ -53,6 +56,10 @@ import axios from 'axios';
 
   .error-msg {
     color : red;
+  }
+  #loader {
+    font-size: larger;
+
   }
 
 </style>
