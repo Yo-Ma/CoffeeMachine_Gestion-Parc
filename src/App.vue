@@ -8,19 +8,42 @@
     <br />
     <router-link to="/liste-des-machines" type="button" class="btn btn-secondary"> Accéder à la liste des machines </router-link>
     <router-link to="/carte" type="button" class="btn btn-secondary"> Accéder à la carte </router-link>
-    <router-view />
+    <router-view v-bind:machines="machines" />
     <br />
+    <h2 v-show="loading" id="loader">
+      Chargement de la carte...
+      <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+    </h2>
+    <h2 v-show="error" class="error-msg"> Request error... </h2>
+
 
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'app',
   data () {
     return {
+      machines: [],
+      loading: true,
+      error: null,
       msg: "Site de maintenance du parc 'Coffee Machines'"
     }
+  },
+  created() {
+    this.loading = true;
+    axios.get('https://machine-api-campus.herokuapp.com/api/machines')
+         .then(response => {
+           this.loading = false;
+           this.machines = response.data;
+         })
+         .catch(error => {
+           this.loading = false;
+           console.log(error);
+         });
   },
   methods: {
     onMachineListClick: function () {
@@ -60,5 +83,12 @@ li {
 
 a {
   color: #42b983;
+}
+
+.error-msg {
+  color : red;
+}
+#loader {
+  font-size : larger;
 }
 </style>

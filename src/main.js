@@ -6,7 +6,7 @@ import MachinesMap from './MachinesMap'
 import Machine from './Machine.vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
-// Another way to safetly inculde an APIKey
+// Another way to safetly include an APIKey
 // require('GMapAPI.js')
 // Vue.use(VueGoogleMaps, {
 //   load: {

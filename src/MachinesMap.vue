@@ -2,18 +2,13 @@
   <div class="container">
     <div >
       <h1>  Carte des machines </h1>
-      <h2 v-show="loading" id="loader">
-        Chargement de la carte...
-        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
-      </h2>
-      <h2 v-show="error" class="error-msg"> Request error... </h2>
-      <gmap-map id="carte-machines" :center="center" :zoom="10" style="width: 70%; height: 800px" class="align-self-center">
-        <gmap-marker :key="machine.id"
+      <gmap-map id="carte-machines" :center="geo" :zoom="10" style="width: 70%; height: 800px" class="align-self-center">
+        <gmap-marker :key="machines.id"
                      v-for="machine in machines"
-                     :position="{lat:Number(machine.latitude), lng:Number(machine.longitude)}"
+                     :position="{lat:Number(machines.latitude), lng:Number(machines.longitude)}"
                      :clickable="true"
                      :draggable="true"
-                     @click="center=machine.position"/>
+                     @click="center = machine.position"/>
       </gmap-map>
       </div>
   </div>
@@ -21,19 +16,45 @@
 
 <script>
 
-import axios from 'axios';
+/*import axios from 'axios';*/
 
   export default {
+    props: ['machines'],
     name: 'machines-map',
     data: function() {
       return {
-        center: {lat: 45.188529, lng: 5.724523999999974},
-        machines: [],
+      /*center: {lat: 45.188529, lng: 5.724523999999974},*/
+      /*machines: [],
         loading: true,
-        error: null,
+        error: null,*/
       }
     },
-    created() {
+/*
+    beforeCreate() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          function geo_success(position) {
+            this.userLocate = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+          }
+          function geo_error() {
+            this.userLocate = {
+              lat: 45.188529,
+              lng: 5.724523999999974
+            };
+            console.log("Sorry, no position available.");
+          }
+
+        });
+      } else {
+        console.log('Geolocation is not supported by this browser')
+      }
+*/
+
+    },
+/*    created() {
 
       axios.get('https://machine-api-campus.herokuapp.com/api/machines')
            .then(response => {
@@ -45,7 +66,7 @@ import axios from 'axios';
              this.loading = false;
              console.log(error);
            });
-    }
+    }*/
   }
 
 </script>
@@ -57,13 +78,13 @@ import axios from 'axios';
     margin: auto;
   }
 
-  .error-msg {
+/*  .error-msg {
     color : red;
   }
   #loader {
     font-size: larger;
 
-  }
+  }*/
 
 </style>
 

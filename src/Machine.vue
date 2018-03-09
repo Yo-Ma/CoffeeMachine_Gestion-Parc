@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    props: ['name', 'status', 'checkedAt'],
+    props: ['machine'/*, 'name', 'status', 'checkedAt'*/],
     name: 'Machine',
     data() {
       return {
