@@ -4,12 +4,12 @@
     <div class="container-fluid">
       <div id="infos-machine" class="container">
         <br />
-        <h1> Machine <b> {{ name }} </b></h1>
+        <h1> Machine <b> {{ machine.name }} </b></h1>
         <br />
-        <h3 v-if="status" class="inGreen"> Status OK </h3>
-        <h3 v-else="status" class="inRed"> Status KO </h3>
+        <h3 v-if="machine.status" class="inGreen"> Status OK </h3>
+        <h3 v-else="machine.status" class="inRed"> Status KO </h3>
         <br />
-        <h5> Dernière vérification faite le : {{ dateFormated(checkedAt) }} </h5>
+        <h5> Dernière vérification faite le : {{ dateFormated(machine.checkedAt) }} </h5>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    props: ['machine'/*, 'name', 'status', 'checkedAt'*/],
+    props: ['machine'],
     name: 'Machine',
     data() {
       return {
@@ -26,7 +26,7 @@
     },
     methods: {
       dateFormated: function (checkedAt) {
-        return checkedAt.toLocaleString();
+         return checkedAt.toLocaleString();
       }
     }
   };
