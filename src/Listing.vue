@@ -1,11 +1,8 @@
 <template>
   <div>
-    <label for="shown-machines" v-for="machine in shownList" v-bind:machines="filteredMachine"> Afficher... </label>
-    <select name="shown-machines" id="shown-machines" class="custom-select"
-            v-bind:machines="shownList">
-      <option value="*"> La liste complète </option>
-      <option value="OK"> Les machines actives </option>
-      <option value="KO"> Les machines désactivées </option>
+    <label for="shown-machines" class="listing-label" v-bind:machines="filteredMachine"> Afficher... </label>
+    <select name="shown-machines" id="shown-machines" class="custom-select" v-model="isShown">
+      <option v-for="option in options" :value="option.value"> {{ option.text }} </option>
     </select>
   </div>
 </template>
@@ -25,18 +22,18 @@
         shownList: this.machines
       }
     },
-    computed: {
+    methods: {
       filteredMachine : function () {
         if (this.isShown === 'OK') {
-          return this.shownList.filter ( function(machine) {
+          console.log( this.shownList.filter ( function(machine) {
             return machine.status === "true"
-          });
+          }));
         } else if (this.isShown === 'KO') {
-          return this.shownList.filter ( function(machine) {
+          console.log( this.shownList.filter ( function(machine) {
             return machine.status === "false"
-          });
+          }));
         }
-        return this.shownList;
+        console.log(this.shownList);
       }
     },
   };
