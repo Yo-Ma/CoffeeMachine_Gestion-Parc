@@ -5,6 +5,7 @@ import MachinesList from './MachinesList'
 import MachinesMap from './MachinesMap'
 import Machine from './Machine.vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import Listing from './Listing.vue'
 
 // Another way to safetly include an APIKey
 // require('GMapAPI.js')
@@ -24,7 +25,7 @@ Vue.use(VueGoogleMaps, {
 Vue.component('MachinesList', MachinesList);
 Vue.component('MachinesMap', MachinesMap);
 Vue.component('Machine', Machine);
-
+Vue.component('listing', Listing);
 
 // Définition des routes
 const routes = [

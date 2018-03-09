@@ -6,12 +6,24 @@
     <hr />
     <h2> Que souhaitez-vous faire ?</h2>
     <br />
+
     <router-link to="/liste-des-machines" type="button" class="btn btn-secondary"> Accéder à la liste des machines </router-link>
     <router-link to="/carte" type="button" class="btn btn-secondary"> Accéder à la carte </router-link>
-    <router-view v-bind:machines="machines" />
+    <br />
+    <br />
+<!--    <div class="container">
+      <label for="shown-machines" class="listing-label"> Afficher... </label>
+      <select name="shown-machines" id="shown-machines" class="custom-select" v-model="isShown">
+        <option v-for="option in options" :value="option.value"> {{ option.text }} </option>
+      </select>
+      <span> Liste séléctionnée : {{ isShown }}</span>
+    </div>-->
+    <listing v-bind:machines="machines" />
+    <br />
+    <router-view />
     <br />
     <h2 v-show="loading" id="loader">
-      Chargement de la carte...
+      Chargement...
       <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
     </h2>
     <h2 v-show="error" class="error-msg"> Request error... </h2>
@@ -25,12 +37,12 @@ import axios from 'axios'
 
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
       machines: [],
       loading: true,
       error: null,
-      msg: "Site de maintenance du parc 'Coffee Machines'"
+      msg: "Site de maintenance du parc 'Coffee Machines'",
     }
   },
   created() {
@@ -52,9 +64,10 @@ export default {
     },
     onMapClick: function () {
       window.alert('La carte est en cours de chargement...');
-    }
+    },
   }
 }
+
 </script>
 
 <style lang="scss">
@@ -91,4 +104,12 @@ a {
 #loader {
   font-size : larger;
 }
+
+.listing-label {
+  font-size: larger;
+}
+  .custom-select {
+    font-size: larger;
+    width: 35%;
+  }
 </style>
